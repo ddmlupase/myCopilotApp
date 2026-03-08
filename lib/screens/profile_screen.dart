@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../main.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final scaffoldBg = isDark ? const Color(0xFF121212) : const Color(0xFFF5F5F7);
+    final cardBg = isDark ? const Color(0xFF1E1E1E) : Colors.white;
+    final textColor = isDark ? Colors.white : const Color(0xFF1D1D1F);
+    final subtitleColor = isDark ? Colors.grey.shade400 : Colors.grey.shade500;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F7),
+      backgroundColor: scaffoldBg,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
+        backgroundColor: cardBg,
+        surfaceTintColor: cardBg,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, size: 18),
-          color: const Color(0xFF1D1D1F),
+          color: textColor,
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'My Account',
           style: TextStyle(
-            color: Color(0xFF1D1D1F),
+            color: textColor,
             fontWeight: FontWeight.w800,
             fontSize: 18,
           ),
@@ -47,19 +59,29 @@ class ProfileScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  // Avatar
+                  // Profile Image (actual photo)
                   Container(
-                    width: 90,
-                    height: 90,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white, width: 3),
-                      color: Colors.white.withOpacity(0.2),
                     ),
-                    child: const Icon(
-                      Icons.person_rounded,
-                      size: 50,
-                      color: Colors.white,
+                    child: ClipOval(
+                      child: Image.network(
+                        'https://scontent.fcgy2-2.fna.fbcdn.net/v/t39.30808-6/473393864_1349478529404363_5756282012752680508_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEWz_OgQR5rkfm2Bj2_xB6HQLh2EHRKaOFAuHYQdEpo4dB5eASqPFQNWvHbUAjMoqg&_nc_ohc=Sd2oK2m5AjQQ7kNvwFCyMQV&_nc_oc=AdnFGxJg-eMRIGIR9h2b8zYNdDe8Rqxi0Vu42nJ-SzPLqCNjTBuawgygz9eZnI-E5LI&_nc_zt=23&_nc_ht=scontent.fcgy2-2.fna&_nc_gid=e2MYVCewRwuYo1ffYEkjCA&oh=00_AfKgjhY8MQmVB67UcSjN3jYlVK4qfNqp8xFSr0RYsRrNA&oe=67F5DAC4',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => Container(
+                          color: Colors.white.withOpacity(0.2),
+                          child: const Icon(
+                            Icons.person_rounded,
+                            size: 50,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -78,6 +100,14 @@ class ProfileScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.white.withOpacity(0.85),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'BSIT - 3rd Year | Gadget Enthusiast',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white.withOpacity(0.7),
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -111,29 +141,85 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // ─── Account Section ───────────────────────
-            _SectionHeader(title: 'Account'),
+            // ─── Personal Info Section ─────────────────
+            _SectionHeader(title: 'Personal Information', textColor: textColor),
             const SizedBox(height: 8),
             _SettingsCard(
+              cardBg: cardBg,
+              children: [
+                _InfoTile(
+                  icon: Icons.person_outline_rounded,
+                  title: 'Full Name',
+                  value: 'Daniel David Lupase',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
+                ),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
+                _InfoTile(
+                  icon: Icons.email_outlined,
+                  title: 'Email',
+                  value: 'daniel.lupase@email.com',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
+                ),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
+                _InfoTile(
+                  icon: Icons.phone_outlined,
+                  title: 'Phone',
+                  value: '+63 912 345 6789',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
+                ),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
+                _InfoTile(
+                  icon: Icons.cake_outlined,
+                  title: 'Birthday',
+                  value: 'January 15, 2003',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
+                ),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
+                _InfoTile(
+                  icon: Icons.location_on_outlined,
+                  title: 'Address',
+                  value: 'Cagayan de Oro City, Philippines',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+
+            // ─── Account Section ───────────────────────
+            _SectionHeader(title: 'Account', textColor: textColor),
+            const SizedBox(height: 8),
+            _SettingsCard(
+              cardBg: cardBg,
               children: [
                 _SettingsTile(
                   icon: Icons.person_outline_rounded,
                   title: 'Edit Profile',
                   subtitle: 'Update your personal information',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.location_on_outlined,
                   title: 'Shipping Addresses',
                   subtitle: '2 addresses saved',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.credit_card_outlined,
                   title: 'Payment Methods',
                   subtitle: 'Visa ending in 4242',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
               ],
@@ -141,21 +227,26 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // ─── Shopping Section ──────────────────────
-            _SectionHeader(title: 'Shopping'),
+            _SectionHeader(title: 'Shopping', textColor: textColor),
             const SizedBox(height: 8),
             _SettingsCard(
+              cardBg: cardBg,
               children: [
                 _SettingsTile(
                   icon: Icons.receipt_long_outlined,
                   title: 'Order History',
                   subtitle: 'View past orders',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.favorite_border_rounded,
                   title: 'Wishlist',
                   subtitle: '5 items saved',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
               ],
@@ -163,14 +254,17 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // ─── Settings Section ──────────────────────
-            _SectionHeader(title: 'Settings'),
+            _SectionHeader(title: 'Settings', textColor: textColor),
             const SizedBox(height: 8),
             _SettingsCard(
+              cardBg: cardBg,
               children: [
                 _SettingsTile(
                   icon: Icons.notifications_outlined,
                   title: 'Notifications',
                   subtitle: 'Manage notification preferences',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                   trailing: Switch(
                     value: true,
@@ -178,30 +272,38 @@ class ProfileScreen extends StatelessWidget {
                     activeColor: AppTheme.gradientMid2,
                   ),
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.dark_mode_outlined,
                   title: 'Dark Mode',
-                  subtitle: 'Toggle dark theme',
+                  subtitle: isDark ? 'Dark theme active' : 'Light theme active',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                   trailing: Switch(
-                    value: false,
-                    onChanged: (_) {},
+                    value: themeProvider.isDarkMode,
+                    onChanged: (val) {
+                      themeProvider.toggleTheme(val);
+                    },
                     activeColor: AppTheme.gradientMid2,
                   ),
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.language_outlined,
                   title: 'Language',
                   subtitle: 'English',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.shield_outlined,
                   title: 'Privacy & Security',
                   subtitle: 'Manage your data',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
               ],
@@ -209,21 +311,26 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // ─── Support Section ───────────────────────
-            _SectionHeader(title: 'Support'),
+            _SectionHeader(title: 'Support', textColor: textColor),
             const SizedBox(height: 8),
             _SettingsCard(
+              cardBg: cardBg,
               children: [
                 _SettingsTile(
                   icon: Icons.help_outline_rounded,
                   title: 'Help Center',
                   subtitle: 'FAQ and support',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
-                const Divider(height: 1, indent: 56),
+                Divider(height: 1, indent: 56, color: isDark ? Colors.white12 : null),
                 _SettingsTile(
                   icon: Icons.info_outline_rounded,
                   title: 'About',
                   subtitle: 'Lupase Tech Store v1.0.0',
+                  textColor: textColor,
+                  subtitleColor: subtitleColor,
                   onTap: () {},
                 ),
               ],
@@ -294,7 +401,8 @@ class _ProfileStat extends StatelessWidget {
 
 class _SectionHeader extends StatelessWidget {
   final String title;
-  const _SectionHeader({required this.title});
+  final Color textColor;
+  const _SectionHeader({required this.title, required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -302,10 +410,10 @@ class _SectionHeader extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w800,
-          color: Color(0xFF1D1D1F),
+          color: textColor,
           letterSpacing: -0.3,
         ),
       ),
@@ -315,13 +423,14 @@ class _SectionHeader extends StatelessWidget {
 
 class _SettingsCard extends StatelessWidget {
   final List<Widget> children;
-  const _SettingsCard({required this.children});
+  final Color cardBg;
+  const _SettingsCard({required this.children, required this.cardBg});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: cardBg,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -336,19 +445,19 @@ class _SettingsCard extends StatelessWidget {
   }
 }
 
-class _SettingsTile extends StatelessWidget {
+class _InfoTile extends StatelessWidget {
   final IconData icon;
   final String title;
-  final String subtitle;
-  final VoidCallback onTap;
-  final Widget? trailing;
+  final String value;
+  final Color textColor;
+  final Color subtitleColor;
 
-  const _SettingsTile({
+  const _InfoTile({
     required this.icon,
     required this.title,
-    required this.subtitle,
-    required this.onTap,
-    this.trailing,
+    required this.value,
+    required this.textColor,
+    required this.subtitleColor,
   });
 
   @override
@@ -359,7 +468,9 @@ class _SettingsTile extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F7),
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white.withOpacity(0.08)
+              : const Color(0xFFF5F5F7),
           borderRadius: BorderRadius.circular(10),
         ),
         child: ShaderMask(
@@ -371,15 +482,75 @@ class _SettingsTile extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: subtitleColor,
+        ),
+      ),
+      subtitle: Text(
+        value,
+        style: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.w600,
-          color: Color(0xFF1D1D1F),
+          color: textColor,
+        ),
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    );
+  }
+}
+
+class _SettingsTile extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+  final Widget? trailing;
+  final Color textColor;
+  final Color subtitleColor;
+
+  const _SettingsTile({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    required this.textColor,
+    required this.subtitleColor,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      leading: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white.withOpacity(0.08)
+              : const Color(0xFFF5F5F7),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ShaderMask(
+          blendMode: BlendMode.srcIn,
+          shaderCallback: (bounds) =>
+              AppTheme.instagramGradient.createShader(bounds),
+          child: Icon(icon, size: 22),
+        ),
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
+          color: textColor,
         ),
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
+        style: TextStyle(fontSize: 12, color: subtitleColor),
       ),
       trailing: trailing ??
           Icon(Icons.chevron_right_rounded,

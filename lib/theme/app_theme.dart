@@ -42,7 +42,7 @@ class AppTheme {
     colors: [Color(0xFFE1306C), Color(0xFFF56040)],
   );
 
-  static ThemeData get theme {
+  static ThemeData get lightTheme {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: gradientMid1,
@@ -56,6 +56,29 @@ class AppTheme {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
       ),
+    );
+  }
+
+  // Keep backward compatibility
+  static ThemeData get theme => lightTheme;
+
+  static ThemeData get darkTheme {
+    return ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: gradientMid1,
+        brightness: Brightness.dark,
+      ),
+      useMaterial3: true,
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: const Color(0xFF121212),
+      appBarTheme: const AppBarTheme(
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
+      ),
+      cardColor: const Color(0xFF1E1E1E),
+      dividerColor: Colors.white12,
     );
   }
 }

@@ -26,7 +26,9 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
         MediaQuery.of(context).orientation == Orientation.landscape;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F7),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? const Color(0xFF121212)
+          : const Color(0xFFF5F5F7),
       body: isLandscape
           ? _buildLandscapeLayout(gadget)
           : _buildPortraitLayout(gadget),
@@ -152,10 +154,16 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
 
   // ─── Details Content (all fields) ───────────────────────────────────────────
   Widget _buildDetailsContent(Gadget gadget) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : const Color(0xFF1D1D1F);
+    final detailsBg = isDark ? const Color(0xFF1E1E1E) : Colors.white;
+    final specBg = isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F7);
+    final specAltBg = isDark ? const Color(0xFF242424) : const Color(0xFFEFEFF1);
+
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      decoration: BoxDecoration(
+        color: detailsBg,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
       padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
       child: Column(
@@ -187,10 +195,10 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
           // Name
           Text(
             gadget.name,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w800,
-              color: Color(0xFF1D1D1F),
+              color: textColor,
               letterSpacing: -0.5,
             ),
           ),
@@ -310,7 +318,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
-              color: const Color(0xFFF5F5F7),
+              color: specBg,
             ),
             clipBehavior: Clip.antiAlias,
             child: Column(
@@ -323,8 +331,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                       horizontal: 16, vertical: 14),
                   decoration: BoxDecoration(
                     color: idx.isEven
-                        ? const Color(0xFFF5F5F7)
-                        : const Color(0xFFEFEFF1),
+                        ? specBg
+                        : specAltBg,
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -343,10 +351,10 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                       Expanded(
                         child: Text(
                           entry.value,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF1D1D1F),
+                            color: textColor,
                           ),
                         ),
                       ),
@@ -365,7 +373,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F7),
+              color: specBg,
               borderRadius: BorderRadius.circular(14),
             ),
             child: Column(
@@ -424,11 +432,12 @@ class _SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Text(title,
-        style: const TextStyle(
+        style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w700,
-            color: Color(0xFF1D1D1F)));
+            color: isDark ? Colors.white : const Color(0xFF1D1D1F)));
   }
 }
 
@@ -439,6 +448,8 @@ class _DataRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : const Color(0xFF1D1D1F);
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
@@ -454,10 +465,10 @@ class _DataRow extends StatelessWidget {
           ),
           Expanded(
             child: Text(value,
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF1D1D1F))),
+                    color: textColor)),
           ),
         ],
       ),

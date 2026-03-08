@@ -3,6 +3,7 @@ import '../theme/app_theme.dart';
 import '../data/gadgets_data.dart';
 import 'item_detail_screen.dart';
 import 'profile_screen.dart';
+import '../main.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -30,9 +31,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final scaffoldBg = isDark ? const Color(0xFF121212) : const Color(0xFFF5F5F7);
+    final cardBg = isDark ? const Color(0xFF1E1E1E) : Colors.white;
+    final textColor = isDark ? Colors.white : const Color(0xFF1D1D1F);
+
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: const Color(0xFFF5F5F7),
+      backgroundColor: scaffoldBg,
       endDrawer: _buildDrawer(),
       body: SafeArea(
         child: CustomScrollView(
@@ -42,7 +48,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Container(
                 padding: const EdgeInsets.fromLTRB(20, 12, 12, 12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: cardBg,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.04),
@@ -147,7 +153,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               gradient: isSelected
                                   ? AppTheme.instagramGradient
                                   : null,
-                              color: isSelected ? null : Colors.white,
+                              color: isSelected ? null : cardBg,
                               borderRadius: BorderRadius.circular(24),
                               border: Border.all(
                                 color: isSelected
@@ -170,7 +176,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               style: TextStyle(
                                 color: isSelected
                                     ? Colors.white
-                                    : Colors.grey.shade700,
+                                    : isDark ? Colors.grey.shade300 : Colors.grey.shade700,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 13,
                               ),
@@ -244,8 +250,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildDrawer() {
+    final isDarkDrawer = Theme.of(context).brightness == Brightness.dark;
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: isDarkDrawer ? const Color(0xFF1E1E1E) : Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.horizontal(left: Radius.circular(24)),
       ),
@@ -352,6 +359,7 @@ class _DrawerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return ListTile(
       leading: ShaderMask(
         blendMode: BlendMode.srcIn,
@@ -361,10 +369,10 @@ class _DrawerTile extends StatelessWidget {
       ),
       title: Text(
         label,
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.w600,
           fontSize: 15,
-          color: Color(0xFF1D1D1F),
+          color: isDark ? Colors.white : const Color(0xFF1D1D1F),
         ),
       ),
       onTap: onTap,
@@ -381,6 +389,11 @@ class _ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardBg = isDark ? const Color(0xFF1E1E1E) : Colors.white;
+    final textColor = isDark ? Colors.white : const Color(0xFF1D1D1F);
+    final imageBg = isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F5F7);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -392,7 +405,7 @@ class _ProductCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: cardBg,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -409,10 +422,10 @@ class _ProductCard extends StatelessWidget {
             Expanded(
               child: Container(
                 width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFF5F5F7),
+                decoration: BoxDecoration(
+                  color: imageBg,
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(20)),
+                      const BorderRadius.vertical(top: Radius.circular(20)),
                 ),
                 child: Stack(
                   children: [
@@ -424,6 +437,8 @@ class _ProductCard extends StatelessWidget {
                           child: Image.network(
                             gadget.imageUrl,
                             fit: BoxFit.contain,
+                            cacheWidth: 300,
+                            cacheHeight: 300,
                             errorBuilder: (_, __, ___) => Icon(
                               Icons.image_not_supported_outlined,
                               size: 40,
@@ -478,10 +493,10 @@ class _ProductCard extends StatelessWidget {
                   // Product Name
                   Text(
                     gadget.name,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1D1D1F),
+                      color: textColor,
                       letterSpacing: -0.2,
                     ),
                     maxLines: 1,
@@ -490,16 +505,12 @@ class _ProductCard extends StatelessWidget {
                   const SizedBox(height: 4),
 
                   // Price
-                  ShaderMask(
-                    blendMode: BlendMode.srcIn,
-                    shaderCallback: (bounds) =>
-                        AppTheme.instagramGradient.createShader(bounds),
-                    child: Text(
-                      '\$${gadget.price.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w900,
-                      ),
+                  Text(
+                    '\$${gadget.price.toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: AppTheme.gradientMid2,
                     ),
                   ),
                   const SizedBox(height: 6),
