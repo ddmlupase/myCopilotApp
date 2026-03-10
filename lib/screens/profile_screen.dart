@@ -68,19 +68,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       border: Border.all(color: Colors.white, width: 3),
                     ),
                     child: ClipOval(
-                      child: Image.network(
-                        'https://scontent.fcgy2-2.fna.fbcdn.net/v/t39.30808-6/473393864_1349478529404363_5756282012752680508_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEWz_OgQR5rkfm2Bj2_xB6HQLh2EHRKaOFAuHYQdEpo4dB5eASqPFQNWvHbUAjMoqg&_nc_ohc=Sd2oK2m5AjQQ7kNvwFCyMQV&_nc_oc=AdnFGxJg-eMRIGIR9h2b8zYNdDe8Rqxi0Vu42nJ-SzPLqCNjTBuawgygz9eZnI-E5LI&_nc_zt=23&_nc_ht=scontent.fcgy2-2.fna&_nc_gid=e2MYVCewRwuYo1ffYEkjCA&oh=00_AfKgjhY8MQmVB67UcSjN3jYlVK4qfNqp8xFSr0RYsRrNA&oe=67F5DAC4',
+                      child: Image.asset(
+                        'assets/danieldavid.jpg',
                         width: 100,
                         height: 100,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => Container(
-                          color: Colors.white.withOpacity(0.2),
-                          child: const Icon(
-                            Icons.person_rounded,
-                            size: 50,
-                            color: Colors.white,
-                          ),
-                        ),
                       ),
                     ),
                   ),

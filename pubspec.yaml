@@ -25,6 +25,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icon/
+    - assets/danieldavid.jpg
 
 dev_dependencies:
   flutter_test:
