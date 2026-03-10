@@ -219,7 +219,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-24', name: 'Samsung Galaxy S25 Ultra', price: 1399.99, brand: 'Samsung', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-ultra-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-1.jpg',
     description: 'Galaxy S25 Ultra with Snapdragon 8 Elite, 200MP camera, Galaxy AI live translation, and titanium unibody.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFFD4C8A8), Color(0xFF3B4B59), Color(0xFFC0C0C0)],
     colorNames: const ['Titanium Black', 'Titanium Yellow', 'Titanium Blue', 'Titanium Silver'],
@@ -227,7 +227,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-25', name: 'Samsung Galaxy S25+', price: 1099.99, brand: 'Samsung', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-plus-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-plus-1.jpg',
     description: 'Galaxy S25+ with a large QHD+ display, Snapdragon 8 Elite, Galaxy AI, and 50MP triple camera.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFFD4E1F5), Color(0xFFE8FFC7), Color(0xFFF5F0E1)],
     colorNames: const ['Navy', 'Icy Blue', 'Mint', 'Silver Shadow'],
@@ -235,7 +235,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-26', name: 'Samsung Galaxy S25', price: 849.99, brand: 'Samsung', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s25-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-1.jpg',
     description: 'Galaxy S25 with compact 6.2" display, Snapdragon 8 Elite, Galaxy AI, and a 50MP camera.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFFD4E1F5), Color(0xFFE8FFC7), Color(0xFFF5F0E1)],
     colorNames: const ['Navy', 'Icy Blue', 'Mint', 'Silver Shadow'],
@@ -363,7 +363,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-42', name: 'Samsung Galaxy Z Fold 6', price: 1899.99, brand: 'Samsung', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-fold6-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-fold5-1.jpg',
     description: 'Galaxy Z Fold 6 with Snapdragon 8 Gen 3, Galaxy AI, and a large 7.6" foldable display.',
     availableColors: const [Color(0xFF1A1A2E), Color(0xFFF5F0E1), Color(0xFFE3B5A4)],
     colorNames: const ['Navy', 'Silver Shadow', 'Pink'],
@@ -371,7 +371,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-43', name: 'Xiaomi 14T Pro', price: 699.99, brand: 'Xiaomi', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-14t-pro-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-13t-pro-1.jpg',
     description: 'Xiaomi 14T Pro with Leica camera, Dimensity 9300+, 50MP triple lens, and 120W HyperCharge.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFF557A95), Color(0xFFC0C0C0)],
     colorNames: const ['Titan Black', 'Titan Blue', 'Titan Gray'],
@@ -387,7 +387,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-45', name: 'Samsung Galaxy Z Flip 6', price: 1099.99, brand: 'Samsung', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip6-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip5-1.jpg',
     description: 'Galaxy Z Flip 6 with a wide FlexWindow, Snapdragon 8 Gen 3, Galaxy AI, and 50MP camera.',
     availableColors: const [Color(0xFFF5E6A3), Color(0xFFD4E1F5), Color(0xFFE6D7F5), Color(0xFF98D8C8), Color(0xFFF5F0E1)],
     colorNames: const ['Yellow', 'Blue', 'Lavender', 'Mint', 'Silver Shadow'],
@@ -395,7 +395,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-46', name: 'Xiaomi POCO M6 Pro', price: 199.99, brand: 'Xiaomi', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-m6-pro-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-poco-x6-pro-1.jpg',
     description: 'POCO M6 Pro with 64MP camera, Helio G99 Ultra, AMOLED 120Hz display, and 67W fast charging.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFF6C5CE7), Color(0xFFFFFFFF)],
     colorNames: const ['Black', 'Purple', 'Silver'],
@@ -427,7 +427,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-50', name: 'Xiaomi Redmi 14C', price: 119.99, brand: 'Xiaomi', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-14c-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-13c-1.jpg',
     description: 'Redmi 14C — budget-friendly with a 50MP AI camera, 5160mAh mega-battery, and Helio G85 chip.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFF557A95), Color(0xFF2D6A4F)],
     colorNames: const ['Midnight Black', 'Dreamy Blue', 'Sage Green'],
@@ -451,7 +451,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-53', name: 'Xiaomi 14 Lite', price: 399.99, brand: 'Xiaomi', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-14-lite-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-13-lite-1.jpg',
     description: 'Xiaomi 14 Lite — ultra-thin design with Snapdragon 7s Gen 2, 50MP triple camera, and 67W fast charging.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFFD4E1F5), Color(0xFFE3B5A4)],
     colorNames: const ['Black', 'Blue', 'Pink'],
@@ -459,7 +459,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-54', name: 'Huawei Pura 70 Lite', price: 449.99, brand: 'Huawei', category: 'Smartphone',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/huawei/huawei-pura-70-lite-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/huawei/huawei-pura-70-1.jpg',
     description: 'Huawei Pura 70 Lite with 50MP XMAGE camera, Kirin 710A, OLED display, and 40W SuperCharge.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFFFFFFFF), Color(0xFF557A95)],
     colorNames: const ['Black', 'White', 'Blue'],
@@ -623,7 +623,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-74', name: 'MacBook Pro 14" M4', price: 2199.00, brand: 'Apple', category: 'Laptop',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-14-m4-2024-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-14-2023-1.jpg',
     description: 'MacBook Pro 14" with M4 chip, Liquid Retina XDR display, Thunderbolt 5, and up to 24-hour battery.',
     availableColors: const [Color(0xFFC0C0C0), Color(0xFF3B3B3D)],
     colorNames: const ['Silver', 'Space Black'],
@@ -639,7 +639,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-76', name: 'Xiaomi Notebook Air 13.3', price: 649.99, brand: 'Xiaomi', category: 'Laptop',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-mi-notebook-air-13.3-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-notebook-pro-16-2023-1.jpg',
     description: 'Xiaomi Notebook Air 13.3 — compact ultrabook with Intel Core i5, 2.5K display, and 65W USB-C charging.',
     availableColors: const [Color(0xFFC0C0C0), Color(0xFF3B3B3D)],
     colorNames: const ['Silver', 'Dark Gray'],
@@ -699,7 +699,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-83', name: 'Samsung Galaxy Buds3 Pro', price: 249.99, brand: 'Samsung', category: 'Accessory',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-buds3-pro-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-buds-fe-1.jpg',
     description: 'Galaxy Buds3 Pro with 24-bit Hi-Fi audio, Adaptive ANC, 360 Audio, and a blade-style design.',
     availableColors: const [Color(0xFFFFFFFF), Color(0xFF3B3B3D)],
     colorNames: const ['White', 'Silver'],
@@ -779,7 +779,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-93', name: 'Samsung Galaxy Watch FE', price: 199.99, brand: 'Samsung', category: 'Accessory',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-watch-fe-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-watch6-classic-1.jpg',
     description: 'Galaxy Watch FE with BioActive sensor, sleep coaching, Wear OS, and a lightweight aluminum design.',
     availableColors: const [Color(0xFF1A1A1A), Color(0xFFE3B5A4), Color(0xFF557A95)],
     colorNames: const ['Graphite', 'Pink Gold', 'Silver Blue'],
@@ -803,7 +803,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-96', name: 'Apple AirPods 4 (ANC)', price: 179.00, brand: 'Apple', category: 'Accessory',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-4-anc-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-pro-2022-1.jpg',
     description: 'AirPods 4 with Active Noise Cancellation, H2 chip, Adaptive Audio, and USB-C charging case.',
     availableColors: const [Color(0xFFFFFFFF)],
     colorNames: const ['White'],
@@ -811,7 +811,7 @@ final List<Gadget> gadgetsList = [
   ),
   Gadget(
     id: 'GAD-97', name: 'Samsung Galaxy Watch7', price: 299.99, brand: 'Samsung', category: 'Accessory',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-watch7-1.jpg',
+    imageUrl: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-watch6-classic-1.jpg',
     description: 'Galaxy Watch7 with Exynos W1000, 3nm processor, dual-frequency GPS, and advanced health monitoring.',
     availableColors: const [Color(0xFF2D6A4F), Color(0xFFF0E6D3), Color(0xFFC0C0C0)],
     colorNames: const ['Green', 'Cream', 'Silver'],
