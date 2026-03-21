@@ -28,6 +28,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         .where((g) => g.category == _selectedCategory)
         .toList();
   }
+  bool isFavorite = false;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -382,6 +384,8 @@ class _DrawerTile extends StatelessWidget {
   }
 }
 
+
+
 // ─── Apple Store-style Product Card ───────────────────────────────────────────
 class _ProductCard extends StatelessWidget {
   final Gadget gadget;
@@ -544,7 +548,18 @@ class _ProductCard extends StatelessWidget {
                         ),
                     ],
                   ),
-                ],
+
+                   IconButton(
+                      icon: ShaderMask(
+                        blendMode: BlendMode.srcIn,
+                        shaderCallback: (bounds) =>
+                            AppTheme.instagramGradient.createShader(bounds),
+                        child: const Icon(Icons.favorite_border_rounded)
+                      ),
+                      onPressed: () {
+                      },
+                    ),
+                  ],                                   
               ),
             ),
           ],
